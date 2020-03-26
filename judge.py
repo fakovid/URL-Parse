@@ -10,6 +10,13 @@ Some alternatives to find about the {topic} of COVID19 is {source}:
 {link}
 '''
 
+mixed_msg = '''
+Hello we have found that this link might not be as accurate as it seems.
+Instead of using these mixed sources, please use official ones like CDC (Center of Disease Control), and WHO (World Health Organization)
+WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019
+CDC: https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/summary.html
+'''
+
 class Message: # This is the class 
     def __init__(self, base_url, long_url, status, category):
         self.url = long_url
@@ -63,7 +70,10 @@ class Message: # This is the class
                 )
             elif self.category == 'entertainment':
                 return 'We have found on snopes that this form of entertainment is spreading lies, please double check the source and stay safe!'
-
+        
+        elif self.status == 'mixed':
+            return mixed_msg
+        
 
 # Load the data from the JSON file
 json_file = open('snopes_store.json', 'r+')
